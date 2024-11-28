@@ -5,17 +5,24 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Leb34oqAAAAABDYsGyg1XoITt_bWnLi1Juxq7P8"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf8HosqAAAAAKH1yXx6gxqQOnKr_Xdn64nIXGht"></script>
     <script>
       function onClick(e) {
         e.preventDefault();
         grecaptcha.enterprise.ready(async () => {
-          const token = await grecaptcha.enterprise.execute("6Leb34oqAAAAABDYsGyg1XoITt_bWnLi1Juxq7P8", {action: 'LOGIN'});
+          const token = await grecaptcha.enterprise.execute("6Lf8HosqAAAAAKH1yXx6gxqQOnKr_Xdn64nIXGht", {action: 'LOGIN'});
         });
       }
     </script>
+    <script type="module" src="./fire.js"></script>
   </head>
   <body class="bg-slate-800 overflow-hidden">
+    <nav class="w-[100%] h-[5em] m-auto p-[0] fixed ">
+      <ul class="flex flex-row align-middle justify-center text-center">
+        <div class="w-[75%] h-[100%] "></div>
+        <div class="w-[25%] h-[100%] "></div>
+      </ul>
+    </nav>
      <div class="fixed w-[50%] h-[75%] bg-transparent m-auto p-[0] flex flex-col align-middle justify-center text-center top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] ">
       <div class="w-[100%] h-[20%] m-auto p-[0] flex flex-col align-middle justify-center text-center relative ">
         <h1 class="text-4xl text-white">A wikipedia summarizer</h1>
