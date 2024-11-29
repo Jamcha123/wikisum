@@ -3,9 +3,9 @@ import * as cheerio from 'cheerio';
 import axios from 'axios'; 
 import openai from 'openai'
 
-const ai = new openai({apiKey: "<secret-key>"})
+const ai = new openai({apiKey: "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"})
 
-export const obj = functions.https.onRequest((req, res) => {
+export const obj = functions.https.onRequest({cors: "https://wikipedia.org"}, (req, res) => {
     const names = req.query.names
     const link = "https://www.wikipedia.org/wiki/" + names.toString() + "";
     axios.get(link, {
@@ -29,6 +29,6 @@ export const obj = functions.https.onRequest((req, res) => {
         res.status(200).send(response.choices[0].message["content"])
         return res.end()
     }).catch((err) => {
-        return functions.https.HttpsError(err)
+        return new functions.https.HttpsError(err)
     })
 })

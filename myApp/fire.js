@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import {getAuth, GoogleAuthProvider, onAuthStateChanged} from 'firebase/auth'
 import { initializeAppCheck, ReCaptchaEnterpriseProvider, setTokenAutoRefreshEnabled } from 'firebase/app-check';
 import {getFirestore} from 'firebase/firestore'
+import * as functions from 'firebase-functions'
 
 const config = {
     apiKey: "AIzaSyALJ1pOuGw815OPX3B9RyWFYjYhiVysXew",
@@ -16,8 +17,6 @@ const config = {
 const app = initializeApp(config); 
 
 const appcheck = initializeAppCheck(app, {
-    provider: new ReCaptchaEnterpriseProvider("6Lf8HosqAAAAAKH1yXx6gxqQOnKr_Xdn64nIXGht"),
+    provider: new ReCaptchaEnterpriseProvider("6Lf7HosqAAAAAKS7Y1SXmdyrSscbPJ4vHxUG-CDH"),
     isTokenAutoRefreshEnabled: true
 })
-
-const auth = getAuth(app); 
