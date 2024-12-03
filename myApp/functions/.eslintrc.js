@@ -4,7 +4,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    "sourceType": "module",
+    "sourceType": "nodule",
     "ecmaVersion": 2018,
   },
   extends: [

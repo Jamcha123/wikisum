@@ -4,35 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Wikisum</title>
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf7HosqAAAAAKS7Y1SXmdyrSscbPJ4vHxUG-CDH"></script>
     <script>
       function onClick(e) {
         e.preventDefault();
         grecaptcha.enterprise.ready(async () => {
-          const token = await grecaptcha.enterprise.execute("6Lf7HosqAAAAAKS7Y1SXmdyrSscbPJ4vHxUG-CDH", {action: 'LOGIN'});
+          const token = await grecaptcha.enterprise.execute('6Lf7HosqAAAAAKS7Y1SXmdyrSscbPJ4vHxUG-CDH', {action: 'LOGIN'});
         });
       }
     </script>
-    <script type="module" src="./fire.js"></script>
   </head>
   <body class="bg-slate-800 overflow-hidden">
-    <nav class="w-[100%] h-[5em] m-auto p-[0] fixed ">
-      <ul class="flex flex-row align-middle justify-center text-center">
-        
-      </ul>
-    </nav>
-     <div class="fixed w-[50%] h-[75%] bg-transparent m-auto p-[0] flex flex-col align-middle justify-center text-center top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] ">
-      <div class="w-[100%] h-[20%] m-auto p-[0] flex flex-col align-middle justify-center text-center relative ">
-        <h1 class="text-4xl text-white">A wikipedia summarizer</h1>
-        <div class="w-[100%] h-[50%] m-auto p-[0] flex flex-row align-middle justify-center text-center relative "></div>
-      </div>
-      <div class="w-[100%] h-[70%] m-auto p-[0] relative flex flex-col align-middle justify-center text-center " id="text"></div>
-      <form action="" class="w-[100%] h-[10%] m-auto p-[0] flex flex-row align-middle justify-center text-center relative " id="form" method="get">
-        <input type="text" id="article" placeholder="enter a wikipedia article" class="w-[75%] h-[100%] m-auto p-[0] relative text-center text-3xl text-white bg-slate-700 border-transparent ">
-        <input type="submit" id="submit" class="w-[25%] h-[100%] m-auto p-[0] relative text-center text-3xl text-white bg-slate-700 border-white border-[2px] cursor-pointer ">
-      </form>
-     </div>
-    <script type="module" src="./main.js"></script>
+    <div id="root" class="fixed w-[100%] h-[100%] m-auto p-[0] bg-transparent "></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

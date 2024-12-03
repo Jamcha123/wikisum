@@ -1,34 +1,32 @@
 import * as functions from 'firebase-functions'; 
+import axios from 'axios';
 import * as cheerio from 'cheerio'; 
-import axios from 'axios'; 
-import openai from 'openai'
+import openai from 'openai'; 
 
-const ai = new openai({apiKey: "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"})
+const ai = new openai({apiKey: "<secret-key>"})
+export const obj = functions.https.onRequest((req, res) => {
+    const text = req.query.text.toString()
 
-export const obj = functions.https.onRequest({cors: "https://wikipedia.org"}, (req, res) => {
-    const names = req.query.names
-    const link = "https://www.wikipedia.org/wiki/" + names.toString() + "";
+    const link = "https://en.wikipedia.org/wiki/" + text;
     axios.get(link, {
-        url: link, 
-        method: "get",
-        responseType: "document",
+        url: link,
+        method: "get", 
+        responseType: "document"
     }).then(async (value) => {
-        const $ = cheerio.load(value["data"]); 
-        const text = $("p").text(); 
+        const $ = cheerio.load(value["data"])
+        console.log($("p").text())
+        const data = $("p").text(); 
+
         const response = await ai.chat.completions.create({
-            model: "gpt-4o", 
+            model: "gpt-4o",
             messages: [
                 {
-                    role: "user", 
-                    content: [
-                        {type: "text", text: "summarize this text in 50 words or less, " + text}
-                    ]
+                    role: "user",
+                    content: "summarize this article in 50 words or less, " + data
                 }
             ]
         })
-        res.status(200).send(response.choices[0].message["content"])
+        res.status(200).write("<h1>" + JSON.stringify(response.choices[0].message["content"]) + "</h1>");
         return res.end()
-    }).catch((err) => {
-        return new functions.https.HttpsError(err)
     })
 })

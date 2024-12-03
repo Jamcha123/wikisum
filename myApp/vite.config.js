@@ -1,18 +1,21 @@
-import {defineConfig} from 'vite'
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vite.dev/config/
 export default defineConfig({
-    server: {
-        proxy: {
-            "/api/": {
-                secure: false,
-                changeOrigin: true,
-                target: "https://obj-6ezwxbgcda-uc.a.run.app?names",
-                rewrite: (path) => path("/^\/api/", '')
-                
-            }
-        },
-        cors: {
-            origin: false
-        }
+  plugins: [react()],
+  server: {
+    open: "/index.html",
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:5001/wikisum-a8c7c/us-central1/obj",
+        changeOrigin: true
+      }
+    },
+    cors: {
+      origin: true, 
+      credentials: true,
+      methods: "GET"
     }
+  }
 })
