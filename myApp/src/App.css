@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+#root{
+  background-size: 300%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+  animation: value 15s ease-in-out infinite;
+}
+@keyframes value{
+  from, to{background-position: 0%;}
+  50%{background-position: 100%;}
+}
 @layer components{
-    h1{
-        @apply text-3xl text-white
-    }
+  
 }
