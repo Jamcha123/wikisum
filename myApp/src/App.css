@@ -14,26 +14,13 @@
   from, to{background-position: 0%;}
   50%{background-position: 100%;}
 }
-@keyframes pulse{
-  0%{color: white;}
-  25%{color: red;}
-  50%{color: white;}
-  75%{color: red;}
-  100%{color: white;}
-}
-.change{
-  animation: pulse 10s ease-in-out forwards;
-}
-h1, p{
+h1, p, button{
   font-weight: 400;
   font-style: normal;
   font-family: "Montserrat", sans-serif;
 }
 @layer components{
-  .change{
-    @apply rounded-full transition-all duration-300
-  }
-  p{
+  p, .request{
     @apply text-2xl text-white
   }
   
