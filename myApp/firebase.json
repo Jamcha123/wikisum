@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "dist ",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -23,6 +23,31 @@
         "firebase-debug.log",
         "firebase-debug.*.log",
         "*.local"
+      ]
+    },
+    {
+      "source": "checkout",
+      "codebase": "checkout",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    },
+    {
+      "source": "checkouts",
+      "codebase": "checkouts",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
       ]
     }
   ]

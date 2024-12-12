@@ -20,7 +20,7 @@ h1, p, button{
   font-family: "Montserrat", sans-serif;
 }
 @layer components{
-  p, .request{
+  p, .request, .limit{
     @apply text-2xl text-white
   }
   

@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'; 
 import {getAuth, onAuthStateChanged} from 'firebase/auth'; 
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check'
+import * as functions from 'firebase-functions'
 
 const config = {
     apiKey: "AIzaSyALJ1pOuGw815OPX3B9RyWFYjYhiVysXew",
