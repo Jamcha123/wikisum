@@ -6,8 +6,30 @@ import axios from 'axios';
 import * as cheerio from 'cheerio'
 import './App.css'
 
+function AddNavbar(){
+  return(
+    <nav className="relative w-[100%] m-auto p-[0] h-[10%] ">
+      <ul className="list-none flex flex-row align-middle justify-center text-center min-h-[100%] min-w-[100%] ">
+        <div className="flex flex-col align-middle justify-center text-center min-w-[fit-content] min-h-[fit-content]">
+          <h1 className="text-3xl text-white">Wikisuma - Be patient</h1>
+          <h1 className="text-2xl text-white mt-[5%]">Wikipedia summarizer</h1>
+        </div>
+      </ul>
+    </nav>
+  )
+}
+
 function AddWiki(){
   useEffect(() => {
+    const url = new URL(window.location); 
+    const search = new URLSearchParams(window.location.search);
+    if(search.get("checkout_session_id")){
+      let num1 = Number.parseInt(window.localStorage.getItem("limit"))
+      window.localStorage.setItem("limit", num1+15)
+      url.search = ""; 
+      window.history.replaceState({}, document.title, url.toString());
+    }
+
     const forms = document.getElementById("form"); 
     const input = document.getElementById("article");
     const text = document.getElementById("text") 
@@ -75,14 +97,16 @@ function AddWiki(){
     })
   })
   return(
-    <div className="relative w-[100%] h-[100%] m-auto p-[0] flex flex-row align-middle justify-center text-center ">
+    <div className="relative w-[100%] h-[90%] m-auto p-[0] flex flex-row align-middle justify-center text-center ">
       <div className="w-[30%] md:w-[20%] h-[100%] m-auto p-[0] relative flex flex-col align-middle justify-center text-center ">
         <div className="w-[100%] h-[80%] m-auto p-[0] relative bg-transparent " id="history">
 
         </div>
         <div className="w-[100%] h-[20%] m-auto p-[0] relative bg-transparent flex flex-col align-middle justify-evenly text-center ">
           <div className="w-[100%] h-[50%] relative m-auto p-[0] flex flex-col align-middle justify-center text-center ">
-
+            <form action="https://buy.stripe.com/00gdTz5JFeYX2ek289" method="get" id="checkout" className="w-[100%] cursor-pointer h-[50%] m-auto p-[0] relative flex flex-row align-middle justify-center text-center ">
+              <input type="submit" value="Buy more Requests" id="submit" className="w-[100%] h-[100%] cursor-pointer m-auto p-[0] relative text-center text-2xl text-white underline " />
+            </form>
           </div>
           <div className="w-[100%] h-[50%] relative m-auto p-[0] flex flex-col align-middle justify-center text-center ">
             <div className="flex flex-row align-middle justify-center text-center min-h-[fit-content] min-w-[fit-content] ">
@@ -97,7 +121,7 @@ function AddWiki(){
       <div className="w-[70%] md:w-[80%] h-[100%] m-auto p-[0] relative flex flex-col align-middle justify-center text-center ">
         <div className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[80%] " id="text"></div>
         <form action="/" id='form' className="w-[100%] h-[5em] m-auto p-[0] relative flex flex-row align-middle justify-center text-center " method="get">
-          <input type="text" id="article" className="w-[85%] h-[100%] m-auto p-[0] relative text-center text-3xl text-white border-transparent bg-gradient-to-tr from-sky-700 via-blue-800 to-sky-700 rounded-3xl " placeholder="enter a wikipedia article" />
+          <input type="text" id="article" required className="w-[85%] h-[100%] m-auto p-[0] relative text-center text-3xl text-white border-transparent bg-gradient-to-tr from-sky-700 via-blue-800 to-sky-700 rounded-3xl " placeholder="enter a wikipedia article" />
           <div className="w-[15%] h-[100%] m-auto p-[0] relative flex flex-row align-middle text-center ">
             <motion.button type="submit" initial={{scale: 1}} whileHover={{scale: 0.9}} whileTap={{scale: 1.1}} transition={{type: "spring", duration: 1}} className="w-[fit-content] h-[fit-content] m-auto p-[0] relative flex flex-col align-middle justify-center cursor-pointer text-white text-3xl " >
               <span className="text-5xl text-white cursor-pointer material-symbols-outlined">
@@ -113,6 +137,7 @@ function AddWiki(){
 export default function App(){
   return(
     <div className="relative w-[100%] h-[100%] m-auto p-[0] flex flex-col align-middle justify-center text-center ">
+      <AddNavbar></AddNavbar>
       <AddWiki></AddWiki>
     </div>
   )

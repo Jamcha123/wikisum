@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'; 
-import {getAuth, onAuthStateChanged} from 'firebase/auth'; 
+import {getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'; 
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check'
+import {addDoc, collection, getFirestore, deleteDoc} from 'firebase/firestore'
 
 
 const config = {
@@ -20,10 +21,13 @@ const appcheck = initializeAppCheck(app, {
     isTokenAutoRefreshEnabled: true
 })
 
+
 const auth = getAuth(app); 
+auth.useDeviceLanguage(); 
+
 onAuthStateChanged(auth, (user) => {
-    if(user == null){
-        console.log("user logged in")
+    if(user != null){
+        console.log("user, logged in")
     }else{
         console.log("user, not found")
     }

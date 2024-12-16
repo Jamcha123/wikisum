@@ -13,9 +13,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.3.0",
     "animejs": "^3.2.2",
     "axios": "^1.7.9",
     "cheerio": "^1.0.0",
+    "express": "^4.21.2",
     "firebase": "^11.1.0",
     "firebase-functions": "^6.1.2",
     "framer-motion": "^11.14.1",
@@ -24,6 +27,7 @@
     "puppeteer": "^23.10.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "stripe": "^17.4.0",
     "three": "^0.171.0"
   },
   "devDependencies": {

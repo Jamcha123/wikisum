@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import * as functions from 'firebase-functions'
 import openai from 'openai/index.mjs'; 
 
-const ai = new openai({apiKey: "<secret-key>"}); 
+const ai = new openai({apiKey: ""}); 
 
 export const obj = functions.https.onRequest({cors: true}, (req, res) => {
     const text = req.query.text
