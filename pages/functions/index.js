@@ -1,7 +1,7 @@
 import axios from 'axios'; 
 import * as cheerio from 'cheerio'; 
 import * as functions from 'firebase-functions'
-import openai from 'openai/index.mjs'; 
+import openai from 'openai'; 
 
 const ai = new openai({apiKey: ""}); 
 
