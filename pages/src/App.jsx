@@ -33,6 +33,7 @@ function AddWiki(){
     const forms = document.getElementById("form"); 
     const input = document.getElementById("article");
     const text = document.getElementById("text") 
+    const count = document.getElementById("words")
 
     $("#nums h1").empty()
     const requests = document.getElementById("nums"); 
@@ -62,7 +63,7 @@ function AddWiki(){
       const arr = []
       $("#text").empty()
 
-      const link = "https://obj-6ezwxbgcda-uc.a.run.app?text=" + input.value 
+      const link = "https://obj-6ezwxbgcda-uc.a.run.app?text=" + input.value + "&count=" + count.value; 
       if(window.localStorage.getItem("request") != window.localStorage.getItem("limit") || window.localStorage.getItem("request") < window.localStorage.getItem("limit")){
         axios.get(link, {
           url: link,
@@ -94,6 +95,7 @@ function AddWiki(){
         alert("requests met or exceed limit")
       }
       input.value = ""
+      count.value = ""
     })
   })
   return(
@@ -101,7 +103,10 @@ function AddWiki(){
       <div className="w-[100%] h-[100%] m-auto p-[0] relative flex flex-col align-middle justify-center text-center ">
         <div className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[80%]  " id="text"></div>
         <form action="/" id='form' className="w-[85%] h-[5em] m-auto p-[0] relative flex flex-row align-middle justify-center text-center " method="get">
-          <input type="text" id="article" required className="w-[90%] h-[100%] m-auto p-[0]  relative text-center text-3xl text-white border-transparent bg-slate-700 " placeholder="enter a wikipedia article" />
+          <div className="flex flex-col align-middle justify-center text-center min-w-[10% min-h-[100%] ">
+            <input type="number" name="words" id="words" className="w-[100%] bg-slate-600 h-[100%] m-auto p-[0] relative text-center text-2xl text-white " placeholder="word count" required />
+          </div>
+          <input type="text" id="article" required className="w-[80%] h-[100%] m-auto p-[0]  relative text-center text-3xl text-white border-transparent bg-slate-700 " placeholder="enter a wikipedia article" />
           <div className="w-[10%] h-[100%] m-auto p-[0] relative flex flex-row align-middle text-center ">
             <motion.button type="submit" initial={{scale: 1}} whileHover={{scale: 0.9}} whileTap={{scale: 1.1}} transition={{type: "spring", duration: 1}} className="bg-slate-600 w-[100%] h-[100%] m-auto p-[0] relative flex flex-row align-middle justify-center cursor-pointer text-white text-3xl " >
               <div className="flex flex-col align-middle justify-center text-center min-w-[100%] min-h-[100%]">
